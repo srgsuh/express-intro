@@ -15,14 +15,24 @@ const limiter = rateLimit({
 app.use(requestTime);
 app.use("/api/greet", limiter);
 
-app.post("/api/greet", async (req: express.Request, res: express.Response) => {
-    await sendSuccess(res, JSON.stringify({message: "Hello!", requestedAt: req.requestTime.toISOString()}));
+app.post("/api/greet", (req: Request, res: Response) => {
+    sendGreeting(req, res);
 });
 
-app.get("/api/status", async (req: Request, res: Response) => {
-    await sendSuccess(res, JSON.stringify({status: "Up and Running", requestedAt: req.requestTime.toISOString()}));
+app.get("/api/status", (req: Request, res: Response) => {
+    sendStatus(req, res);
 });
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+function sendGreeting(req: Request, res: Response) {
+    const response = {message: "Hello!", requestedAt: req.requestTime.toISOString()};
+    res.status(200).json(response);
+}
+
+function sendStatus(req: Request, res: Response) {
+    const response = {status: "Up and Running", requestedAt: req.requestTime.toISOString()};
+    res.status(200).json(response);
+}
