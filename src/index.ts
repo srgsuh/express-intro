@@ -1,5 +1,6 @@
 import express from 'express';
 import { rateLimit } from 'express-rate-limit'
+import {sendSuccess} from "./utils/express-http.js";
 
 const port = 3501;
 
@@ -13,8 +14,11 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
-app.post('/api/greet', (req: express.Request, res: express.Response) => {
-  res.send('Hello TTT World!');
+app.post('/api/greet', async (req: express.Request, res: express.Response) => {
+    req.requestTime = new Date().toISOString();
+    console.log(req.requestTime);
+
+    await sendSuccess(res, JSON.stringify({message: "Hello!"}))
 });
 
 app.listen(port, () => {

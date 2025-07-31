@@ -2,10 +2,12 @@
   "name": "express-basics",
   "version": "1.0.0",
   "description": "",
-  "main": "/src/index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "node --loader ts-node/esm --no-warnings ./src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node ./dist/index.js"
   },
   "private": true,
   "dependencies": {
