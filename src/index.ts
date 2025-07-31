@@ -1,7 +1,6 @@
 import express, {Request, Response} from 'express';
 import { rateLimit } from 'express-rate-limit'
-import {sendSuccess} from "./utils/express-http.js";
-import {requestTime} from "./middleware/requestTime.js";
+import {requestTime} from "./middleware/requestTime.ts";
 
 const port = 3501;
 
