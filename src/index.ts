@@ -11,8 +11,9 @@ const limiter = rateLimit({
     limit: 3,
     message: "Too Many Requests"
 })
-app.use(requestTime);
+
 app.use("/api/greet", limiter);
+app.use(requestTime);
 
 app.post("/api/greet", (req: Request, res: Response) => {
     sendGreeting(req, res);
