@@ -1,8 +1,8 @@
 import express, {Request, Response} from 'express';
-import { rateLimit } from 'express-rate-limit'
+import {rateLimit} from 'express-rate-limit'
 import {requestTime} from "./middleware/requestTime.ts";
-import {formatDate} from "./utils/date-time-utils.js";
-import {getConfigValue} from "./utils/config-utils.js";
+import {formatDate} from "./utils/date-time-utils.ts";
+import {getConfigValue} from "./utils/config-utils.ts";
 
 const DEFAULT_PORT = 3501;
 
