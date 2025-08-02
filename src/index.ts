@@ -1,6 +1,7 @@
 import express, {Request, Response} from 'express';
 import { rateLimit } from 'express-rate-limit'
 import {requestTime} from "./middleware/requestTime.ts";
+import {formatDate} from "./utils/date-time-utils.js";
 
 const port = 3501;
 
@@ -28,11 +29,11 @@ app.listen(port, () => {
 });
 
 function sendGreeting(req: Request, res: Response) {
-    const response = {message: "Hello!", requestedAt: req.requestTime.toISOString()};
+    const response = {message: "Hello!", requestedAt: formatDate(req.requestTime)};
     res.status(200).json(response);
 }
 
 function sendStatus(req: Request, res: Response) {
-    const response = {status: "Up and Running", requestedAt: req.requestTime.toISOString()};
+    const response = {status: "Up and Running", requestedAt: formatDate(req.requestTime)};
     res.status(200).json(response);
 }
