@@ -2,8 +2,11 @@ import express, {Request, Response} from 'express';
 import { rateLimit } from 'express-rate-limit'
 import {requestTime} from "./middleware/requestTime.ts";
 import {formatDate} from "./utils/date-time-utils.js";
+import {getConfigValue} from "./utils/config-utils.js";
 
-const port = 3501;
+const DEFAULT_PORT = 3501;
+
+const port = getConfigValue<number>("server.port", DEFAULT_PORT);
 
 const app = express();
 
