@@ -1,0 +1,8 @@
+{
+  "server": {
+    "port": 3501
+  },
+  "format": {
+    "date": "yyyy-MM-dd HH:mm:ss zzzz"
+  }
+}
